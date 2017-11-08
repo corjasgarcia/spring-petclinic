@@ -343,6 +343,25 @@
             </testResource>
         </testResources>
         <plugins>
+				<plugin>
+					<groupId>com.lazerycode.jmeter</groupId>
+					<artifactId>jmeter-maven-plugin</artifactId>
+					<version>2.4.0</version>
+					<executions>
+						<execution>
+							<id>jmeter-tests</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>jmeter</goal>
+							</goals>
+					   </execution>
+					</executions>
+					<configuration>
+								<testFilesIncluded>
+									<jMeterTestFile>src/test/jmeter/*.jmx</jMeterTestFile>
+								</testFilesIncluded>
+					</configuration>
+				  </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -491,7 +510,7 @@
                             <arguments>
                                 <argument>install</argument>
                             </arguments>
-                            <workingDirectory>${basedir}</workingDirectory>
+				<workingDirectory>${basedir}</workingDirectory>
                         </configuration>
                     </plugin>
                 </plugins>
